@@ -3,11 +3,11 @@ const express = require('express');
 const axios = require('axios');
 
 // Twitter API credentials
-const apiKey = 'jXkY0IowHAq7tuBrxCL3udWd5';
-const apiSecretKey = 'AiGz3TBzkjieXAKrlvhGclKwMhXjMRRic26U60mbBAgHPxtZou';
-const accessToken = '1413589492125114372-JYiH9iq3VTx28IA7EBD4k9b96WHFdv';
-const accessTokenSecret = 'RHEXqn4O2dNPuaRwMvlYJ0Ql7nWWZ98jgTY6QkPFqEOou';
-const bearerToken = 'AAAAAAAAAAAAAAAAAAAAAG%2BYrQEAAAAAWTr5ElkDfRvRNUrg%2FAQO49xVW%2FE%3Du7ktMYSRIxfRHeFAsij4upcjiTbpPG7FYuCby9RbHRYtZZmCkq';
+const apiKey = process.env.X_API_KEY; // Use the names you set in Vercel
+const apiSecretKey = process.env.X_API_SECRET_KEY;
+const accessToken = process.env.X_ACCESS_TOKEN;
+const accessTokenSecret = process.env.X_ACCESS_TOKEN_SECRET;
+const bearerToken = process.env.X_BEARER_TOKEN;
 
 // Initialize express
 const app = express();
