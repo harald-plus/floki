@@ -1,6 +1,6 @@
 // Import required modules
 const express = require('express');
-const axios = require('axios');
+const cors = require('cors');
 
 // Twitter API credentials
 const apiKey = process.env.X_API_KEY; // Use the names you set in Vercel
@@ -12,6 +12,15 @@ const bearerToken = process.env.X_BEARER_TOKEN;
 // Initialize express
 const app = express();
 const port = 3000;
+
+// CORS options
+const corsOptions = {
+  origin: 'https://floki.com', // replace with your front-end domain
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
+
+// Enable CORS with options
+app.use(cors(corsOptions));
 
 // Endpoint to get follower count
 app.get('/getFollowerCount', async (req, res) => {
