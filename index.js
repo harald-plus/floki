@@ -13,10 +13,11 @@ const bearerToken = process.env.X_BEARER_TOKEN;
 const app = express();
 const port = 3000;
 
-// CORS options
+// CORS configuration
 const corsOptions = {
-  origin: 'https://floki.com', // replace with your front-end domain
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+    origin: 'https://floki.com', // Allow your frontend URL
+    methods: 'GET', // Adjust according to your needs
+    allowedHeaders: ['Content-Type'] // Adjust as necessary
 };
 
 // Enable CORS with options
