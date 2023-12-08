@@ -13,15 +13,19 @@ const bearerToken = process.env.X_BEARER_TOKEN;
 const app = express();
 const port = 3000;
 
-// CORS configuration
-const corsOptions = {
-    origin: 'https://floki.com', // Allow your frontend URL
-    methods: 'GET', // Adjust according to your needs
-    allowedHeaders: ['Content-Type'] // Adjust as necessary
-};
+// Middleware to set CORS headers
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', 'https://floki.com'); // Allow your frontend domain
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS'); // Allowed methods
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization'); // Allowed headers
 
-// Enable CORS with options
-app.use(cors(corsOptions));
+    // Handle preflight requests for CORS
+    if ('OPTIONS' === req.method) {
+        res.sendStatus(200);
+    } else {
+        next();
+    }
+});
 
 // Endpoint to get follower count
 app.get('/getFollowerCount', async (req, res) => {
