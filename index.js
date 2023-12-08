@@ -1,6 +1,7 @@
 // Import required modules
 const express = require('express');
 const cors = require('cors');
+const axios = require('axios');
 
 // Twitter API credentials
 const apiKey = process.env.X_API_KEY; // Use the names you set in Vercel
